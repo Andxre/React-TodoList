@@ -9,7 +9,10 @@ function Todo(props) {
     }
 
     const buttonStyle = {
-        marginLeft: '10px'
+        marginLeft: '10px',
+        border: 'solid 1px',
+        backgroundColor: 'white'
+
     }
 
     const handleRemoveClick = () => {

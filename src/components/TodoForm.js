@@ -2,6 +2,19 @@ import React, { useState } from 'react'
 
 function TodoForm({addTodo}) {
 
+    const inputStyle = {
+        height: '30px',
+    }
+
+    const buttonStyle = {
+        marginLeft: '10px',
+        border: 'solid 1px',
+        backgroundColor: 'white',
+        height: '35px',
+
+    }
+
+
     const [edit, setEdit] = useState({
         id: null,
         task: ""
@@ -32,8 +45,8 @@ function TodoForm({addTodo}) {
 
     return (
         <div>
-            <input value = {edit.task} onChange={handleChange} onKeyPress={handleKeyPress}></input>
-            <button onClick={handleSubmit}>
+            <input style={inputStyle} value = {edit.task} onChange={handleChange} onKeyPress={handleKeyPress}></input>
+            <button style={buttonStyle} onClick={handleSubmit}>
                 Add
             </button>
 
