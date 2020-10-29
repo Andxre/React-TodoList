@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-function TodoForm({ addTodo }) {
+function ListForm({ addList }) {
+  const divStyle = {
+    flexDirection: "column",
+    justifyContent: "center",
+    paddingBottom: "40px",
+  };
+
   const inputStyle = {
     height: "30px",
   };
@@ -12,39 +18,35 @@ function TodoForm({ addTodo }) {
     height: "35px",
   };
 
-  const [edit, setEdit] = useState({
-    id: null,
-    task: "",
-  });
+  const [edit, setEdit] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
-    setEdit({
-      task: e.target.value,
-    });
+    setEdit(e.target.value);
   };
 
   const handleSubmit = () => {
-    if (edit.task != "") {
-      addTodo({ ...edit, id: Math.random() * 1000 });
-      setEdit({ task: "" });
+    if (edit != "") {
+      addList(edit);
+      setEdit("");
     }
     return;
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && edit.task !== "") {
-      addTodo({ ...edit, id: Math.random() * 1000 });
-      setEdit({ task: "" });
+    if (e.key === "Enter" && edit !== "") {
+      addList(edit);
+      setEdit("");
     }
     return;
   };
 
   return (
-    <div>
+    <div style={divStyle}>
+      <h3>Create List</h3>
       <input
         style={inputStyle}
-        value={edit.task}
+        value={edit}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       ></input>
@@ -55,4 +57,4 @@ function TodoForm({ addTodo }) {
   );
 }
 
-export default TodoForm;
+export default ListForm;
